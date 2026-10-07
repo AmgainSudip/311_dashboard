@@ -245,3 +245,15 @@ st.pyplot(
 )
 
 plt.close(fig3)
+
+# MAP: 311 Request Locations
+st.subheader("311 Request Locations")
+
+map_data = filtered_df[["lat", "lon"]].copy()
+
+map_data["lat"] = pd.to_numeric(map_data["lat"], errors="coerce")
+map_data["lon"] = pd.to_numeric(map_data["lon"], errors="coerce")
+
+map_data = map_data.dropna()
+
+st.map(map_data)
